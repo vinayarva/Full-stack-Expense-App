@@ -1,18 +1,24 @@
 function handleFormSubmit(event) {
     event.preventDefault();
 
-    // console.log(event.target.price.target.value)
-const expenses = {
-    price : event.target.price.value,
-    description : event.target.description.value,
-    categories : event.target.categories.value,
+    const hiddenID =  document.getElementById("hiddenId")
+
+    const expenses = {
+        price : event.target.price.value,
+        description : event.target.description.value,
+        categories : event.target.categories.value,
+        }
+
+    if(hiddenID){
+            axios.put("http://localhost:3000/edit/"+hiddenID,expenses)
+    }else{
+
+        axios.post("http://localhost:3000/",expenses).then((res)=>{
+            console.log(res)
+        }).catch((err)=> console.log(err))
     }
-
-    axios.post("http://localhost:3000/",expenses).then((res)=>{
-        console.log(res)
-    }).catch((err)=> console.log(err))
-
     
+
     window.location.reload();
 }
 
@@ -42,6 +48,15 @@ function displayUser(data){
         ul.removeChild(element)
          axios.delete("http://localhost:3000/delete/"+data.id).then(res => console.log(res)).catch(err=> console.log(err))
     })
+    const edit_btn = document.createElement("button")
+
+    edit_btn.innerText = "Edit"
+    
+    edit_btn.addEventListener("click",(event)=>{
+        document.getElementById("price").value =  data.price
+        document.getElementById("")
+    })
+
 
     li.appendChild(delete_btn)
     ul.appendChild(li)

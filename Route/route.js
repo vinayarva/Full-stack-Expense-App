@@ -12,5 +12,7 @@ route.post("/",Controller.postContoller)
 
 route.delete("/delete/:id",Controller.deleteController)
 
+route.put("/edit/:id",Controller.editController)
+
 
 module.exports = route
