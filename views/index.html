@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full stack Expense App </title>
+</head>
+<style>
+    input,label,select{
+        display: block;
+        margin: 5px;
+        width: 200px;
+    }
+    .submit_btn{
+        display: block;
+        margin: 5px;
+        width: 200px;
+    }
+    button{
+        margin:5PX;
+    }
+</style>
+<body>
+    <h1 style="text-transform: capitalize;">Full stack Expense App</h1>
+    <form onsubmit='handleFormSubmit(event)'>
+        <label for="price">Price </label>
+        <input type="number" name="price" id="price">
+        <label for="description">Description</label>
+        <input type="text" name="description" id="description">
+        <label for="catagories">Catagories </label>
+        <select name="categories" id="catagories">
+            <option value="">Please Select a Option</option>
+            <option value="Shoping">Shoping</option>
+            <option value="Games">Games</option>
+            <option value="Grocery">Grocery</option>
+            <option value="Movies">Movies</option>
+        </select>
+        <button type="submit" class="submit_btn">Submit</button>
+    </form>
+    <div class="container">
+        <ul></ul>
+    </div>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="index.js"></script>
+</body>
+</html>
