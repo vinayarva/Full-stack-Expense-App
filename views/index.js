@@ -1,7 +1,7 @@
 function handleFormSubmit(event) {
     event.preventDefault();
 
-    const hiddenID =  document.getElementById("hiddenId")
+    const hiddenID =  document.getElementById("hiddenId").value
 
     const expenses = {
         price : event.target.price.value,
@@ -10,7 +10,9 @@ function handleFormSubmit(event) {
         }
 
     if(hiddenID){
-            axios.put("http://localhost:3000/edit/"+hiddenID,expenses)
+
+        console.log(hiddenID)
+            axios.put("http://localhost:3000/edit/"+hiddenID,expenses).then(res => console.log(res)).catch(err=>console.log(err))
     }else{
 
         axios.post("http://localhost:3000/",expenses).then((res)=>{
@@ -19,7 +21,7 @@ function handleFormSubmit(event) {
     }
     
 
-    window.location.reload();
+    // window.location.reload();
 }
 
 document.addEventListener("DOMContentLoaded",()=>{
@@ -54,8 +56,13 @@ function displayUser(data){
     
     edit_btn.addEventListener("click",(event)=>{
         document.getElementById("price").value =  data.price
-        document.getElementById("")
+        document.getElementById("description").value =  data.description
+        document.getElementById("catagories").value =  data.categories
+
+        document.getElementById("hiddenId").value = data.id
     })
+
+    li.appendChild(edit_btn)
 
 
     li.appendChild(delete_btn)
